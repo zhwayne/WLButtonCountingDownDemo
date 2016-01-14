@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="l2q-4O-PCc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--One-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ep-tn-4e4">
+                                <rect key="frame" x="100" y="262" width="120" height="44"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QLe-3f-Fo2"/>
+                                    <constraint firstAttribute="width" constant="120" id="Szx-LN-BuM"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="l6y-vf-2qV" kind="push" id="PmJ-Vf-8ic"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3ep-tn-4e4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1KF-TK-2mP"/>
+                            <constraint firstItem="3ep-tn-4e4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F15-TG-tcA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="One" id="6F1-9i-BVa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="323"/>
+        </scene>
+        <!--Two-->
+        <scene sceneID="cLS-bZ-udR">
+            <objects>
+                <viewController id="l6y-vf-2qV" customClass="ViewController2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kEz-dl-coQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="EBX-CB-r54"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XIs-Iw-E8H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvz-gr-LqW" customClass="WLCaptcheButton">
+                                <rect key="frame" x="20" y="160" width="120" height="44"/>
+                                <color key="backgroundColor" red="0.36480864369999999" green="0.81026647870000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="b8j-gn-4In"/>
+                                    <constraint firstAttribute="width" constant="120" id="u6C-Ng-CzZ"/>
+                                </constraints>
+                                <state key="normal" title="点击获取验证码">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="identifyKey" value="BlueKey"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="captchButtonTouchUpInside:" destination="l6y-vf-2qV" eventType="touchUpInside" id="Xcu-pN-LJe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekw-n2-oAD" customClass="WLCaptcheButton">
+                                <rect key="frame" x="180" y="160" width="120" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="YOU-pa-Rjp"/>
+                                    <constraint firstAttribute="height" constant="44" id="fJM-bt-ffw"/>
+                                </constraints>
+                                <state key="normal" title="点击获取验证码">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="identifyKey" value="PinkKey"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="captchButtonTouchUpInside:" destination="l6y-vf-2qV" eventType="touchUpInside" id="F4l-cj-WeM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ekw-n2-oAD" firstAttribute="centerX" secondItem="XIs-Iw-E8H" secondAttribute="centerX" multiplier="1.5" id="Mf1-3z-FLm"/>
+                            <constraint firstItem="Fvz-gr-LqW" firstAttribute="centerX" secondItem="XIs-Iw-E8H" secondAttribute="centerX" multiplier="0.5" id="aN3-eM-Xb6"/>
+                            <constraint firstItem="Ekw-n2-oAD" firstAttribute="top" secondItem="kEz-dl-coQ" secondAttribute="bottom" constant="96" id="hSJ-Ah-XRp"/>
+                            <constraint firstItem="Fvz-gr-LqW" firstAttribute="top" secondItem="kEz-dl-coQ" secondAttribute="bottom" constant="96" id="oQS-uf-qNK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Two" id="vCX-wW-S4J"/>
+                    <connections>
+                        <outlet property="captcheBlueButton" destination="Fvz-gr-LqW" id="2HS-2W-5bs"/>
+                        <outlet property="captchePinkButton" destination="Ekw-n2-oAD" id="Yub-YC-rEy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="caE-dV-PWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="320"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qtl-RD-IjP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l2q-4O-PCc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EXL-dA-AoA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0a0-Ph-1f8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tw-53-A2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="323"/>
+        </scene>
+    </scenes>
+</document>
