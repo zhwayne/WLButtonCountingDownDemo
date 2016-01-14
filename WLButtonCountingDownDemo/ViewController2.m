@@ -11,9 +11,6 @@
 
 @interface ViewController2 ()
 
-@property (weak, nonatomic) IBOutlet WLCaptcheButton *captcheBlueButton;
-@property (weak, nonatomic) IBOutlet WLCaptcheButton *captchePinkButton;
-
 @end
 
 @implementation ViewController2

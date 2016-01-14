@@ -101,10 +101,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Two" id="vCX-wW-S4J"/>
-                    <connections>
-                        <outlet property="captcheBlueButton" destination="Fvz-gr-LqW" id="2HS-2W-5bs"/>
-                        <outlet property="captchePinkButton" destination="Ekw-n2-oAD" id="Yub-YC-rEy"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caE-dV-PWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
