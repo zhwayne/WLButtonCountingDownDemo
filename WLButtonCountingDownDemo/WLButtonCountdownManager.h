@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param task 任务
  *  @return YES - 存在， NO - 不存在
  */
-- (BOOL)coundownTaskExistWithKey:(NSString *)akey task:(NSOperation * _Nullable * _Nullable)task;
+- (BOOL)countdownTaskExistWithKey:(NSString *)akey task:(NSOperation * _Nullable * _Nullable)task;
 
 
 @end

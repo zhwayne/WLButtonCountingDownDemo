@@ -129,7 +129,7 @@
         return;
     
     WLCountdownTask *task = nil;
-    if ([self coundownTaskExistWithKey:aKey task:&task]) {
+    if ([self countdownTaskExistWithKey:aKey task:&task]) {
         task.countingDownBlcok = countingDown;
         task.finishedBlcok     = finished;
         if (countingDown) {
@@ -146,7 +146,7 @@
 }
 
 
-- (BOOL)coundownTaskExistWithKey:(NSString *)akey
+- (BOOL)countdownTaskExistWithKey:(NSString *)akey
                             task:(NSOperation *__autoreleasing  _Nullable *)task
 {
     __block BOOL taskExist = NO;
