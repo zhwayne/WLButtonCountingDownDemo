@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class WLCountdownTask;
 NS_ASSUME_NONNULL_BEGIN
 @interface WLButtonCountdownManager : NSObject
 
@@ -38,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param task 任务
  *  @return YES - 存在， NO - 不存在
  */
-- (BOOL)countdownTaskExistWithKey:(NSString *)akey task:(NSOperation * _Nullable * _Nullable)task;
+- (BOOL)countdownTaskExistWithKey:(NSString *)akey task:(WLCountdownTask * _Nullable * _Nullable)task;
 
 
 @end

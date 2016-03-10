@@ -28,6 +28,11 @@
  */
 @property (assign, nonatomic) UIBackgroundTaskIdentifier taskIdentifier;
 
+/**
+ *  `NSOperation`的`name`属性只在iOS8+中存在，这里定义一个属性，用来兼容 iOS7
+ */
+@property (copy, nonatomic) NSString *operationName;
+
 @end
 
 
@@ -137,26 +142,45 @@
         }
     } else {
         task                   = [[WLCountdownTask alloc] init];
-        task.name              = aKey;
         task.leftTimeInterval  = timeInterval;
         task.countingDownBlcok = countingDown;
         task.finishedBlcok     = finished;
+        
+        if ([@([UIDevice currentDevice].systemVersion.doubleValue) compare:@(8)] == NSOrderedAscending) {
+            task.operationName = aKey;
+        }
+        else {
+            task.name = aKey;
+        }
+        
         [_pool addOperation:task];
     }
 }
 
 
 - (BOOL)countdownTaskExistWithKey:(NSString *)akey
-                            task:(NSOperation *__autoreleasing  _Nullable *)task
+                             task:(WLCountdownTask *__autoreleasing  _Nullable *)task
 {
     __block BOOL taskExist = NO;
-    [_pool.operations enumerateObjectsUsingBlock:^(__kindof NSOperation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.name isEqualToString:akey]) {
-            if (task) *task = obj;
-            taskExist = YES;
-            *stop     = YES;
-        }
-    }];
+    
+    if ([@([UIDevice currentDevice].systemVersion.doubleValue) compare:@(8)] == NSOrderedAscending) {
+        [_pool.operations enumerateObjectsUsingBlock:^(__kindof WLCountdownTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.operationName isEqualToString:akey]) {
+                if (task) *task = obj;
+                taskExist = YES;
+                *stop     = YES;
+            }
+        }];
+    }
+    else {
+        [_pool.operations enumerateObjectsUsingBlock:^(__kindof WLCountdownTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.name isEqualToString:akey]) {
+                if (task) *task = obj;
+                taskExist = YES;
+                *stop     = YES;
+            }
+        }];
+    }
     
     return taskExist;
 }
