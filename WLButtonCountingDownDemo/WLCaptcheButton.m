@@ -58,24 +58,23 @@
     return _overlayLabel;
 }
 
-
-- (void)setIdentifyKey:(NSString *)identifyKey {
-    _identifyKey = identifyKey;
-    if ([[WLButtonCountdownManager defaultManager] countdownTaskExistWithKey:identifyKey task:nil]) {
-        [self shouldNotSendAction];
-    }
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.overlayLabel.frame = self.bounds;
+    
+    if ([[WLButtonCountdownManager defaultManager] countdownTaskExistWithKey:self.identifyKey task:nil]) {
+        [self shouldCountDown];
+    }
 }
 
 
-- (void)shouldNotSendAction {
+- (void)shouldCountDown {
     self.enabled             = NO;
+    self.titleLabel.alpha    = 0;
     self.overlayLabel.hidden = NO;
     self.overlayLabel.text   = self.titleLabel.text;
+    [self.overlayLabel setBackgroundColor:self.disabledBackgroundColor ?: self.backgroundColor];
+    [self.overlayLabel setTextColor:self.disabledTitleColor ?: self.titleLabel.textColor];
     
     __weak __typeof(self) weakSelf = self;
     [[WLButtonCountdownManager defaultManager] scheduledCountDownWithKey:self.identifyKey timeInterval:60 countingDown:^(NSTimeInterval leftTimeInterval) {
@@ -85,6 +84,9 @@
         __strong __typeof(weakSelf) self = weakSelf;
         self.enabled             = YES;
         self.overlayLabel.hidden = YES;
+        self.titleLabel.alpha    = 1;
+        [self.overlayLabel setBackgroundColor:self.backgroundColor];
+        [self.overlayLabel setTextColor:self.titleLabel.textColor];
     }];
 }
 
@@ -93,9 +95,11 @@
         return;
     }
     
-    [self shouldNotSendAction];
     [super sendAction:action to:target forEvent:event];
 }
 
+- (void)fire {
+    [self shouldCountDown];
+}
 
 @end

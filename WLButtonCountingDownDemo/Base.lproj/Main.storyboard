@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="l2q-4O-PCc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="l2q-4O-PCc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -57,6 +57,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekw-n2-oAD" customClass="WLCaptcheButton">
+                                <rect key="frame" x="180" y="160" width="120" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="YOU-pa-Rjp"/>
+                                    <constraint firstAttribute="height" constant="44" id="fJM-bt-ffw"/>
+                                </constraints>
+                                <state key="normal" title="点击获取验证码">
+                                    <color key="titleColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="identifyKey" value="PinkKey"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledTitleColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="captchButtonTouchUpInside:" destination="l6y-vf-2qV" eventType="touchUpInside" id="F4l-cj-WeM"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvz-gr-LqW" customClass="WLCaptcheButton">
                                 <rect key="frame" x="20" y="160" width="120" height="44"/>
                                 <color key="backgroundColor" red="0.36480864369999999" green="0.81026647870000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,26 +88,12 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="identifyKey" value="BlueKey"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="captchButtonTouchUpInside:" destination="l6y-vf-2qV" eventType="touchUpInside" id="Xcu-pN-LJe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekw-n2-oAD" customClass="WLCaptcheButton">
-                                <rect key="frame" x="180" y="160" width="120" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="YOU-pa-Rjp"/>
-                                    <constraint firstAttribute="height" constant="44" id="fJM-bt-ffw"/>
-                                </constraints>
-                                <state key="normal" title="点击获取验证码">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="identifyKey" value="PinkKey"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="captchButtonTouchUpInside:" destination="l6y-vf-2qV" eventType="touchUpInside" id="F4l-cj-WeM"/>
                                 </connections>
                             </button>
                         </subviews>
