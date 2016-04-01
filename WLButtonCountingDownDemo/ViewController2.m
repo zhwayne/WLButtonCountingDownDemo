@@ -22,7 +22,7 @@
 
 - (IBAction)captchButtonTouchUpInside:(WLCaptcheButton *)sender {
     NSLog(@"%@", sender.identifyKey);
-//    [sender fire];
+    [sender fire];
 }
 
 @end
