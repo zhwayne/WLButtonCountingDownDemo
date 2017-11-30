@@ -38,7 +38,6 @@
 }
 
 - (void)initialize {
-    self.identifyKey        = NSStringFromClass([self class]);
     self.clipsToBounds      = YES;
     self.layer.cornerRadius = 4;
     
@@ -52,7 +51,7 @@
         _overlayLabel.backgroundColor = self.backgroundColor;
         _overlayLabel.font            = self.titleLabel.font;
         _overlayLabel.textAlignment   = NSTextAlignmentCenter;
-        _overlayLabel.hidden          = YES;
+        _overlayLabel.alpha           = 0;
     }
     
     return _overlayLabel;
@@ -76,7 +75,7 @@
         
         self.enabled             = NO;
         self.titleLabel.alpha    = 0;
-        self.overlayLabel.hidden = NO;
+        self.overlayLabel.alpha  = 1;
         [self.overlayLabel setBackgroundColor:self.disabledBackgroundColor ?: self.backgroundColor];
         [self.overlayLabel setTextColor:self.disabledTitleColor ?: self.titleLabel.textColor];
         self.overlayLabel.text = [NSString stringWithFormat:@"%@ 秒后重试", @(leftTimeInterval)];
@@ -85,7 +84,7 @@
         
         __strong __typeof(weakSelf) self = weakSelf;
         self.enabled             = YES;
-        self.overlayLabel.hidden = YES;
+        self.overlayLabel.alpha  = 0;
         self.titleLabel.alpha    = 1;
         [self.overlayLabel setBackgroundColor:self.backgroundColor];
         [self.overlayLabel setTextColor:self.titleLabel.textColor];
