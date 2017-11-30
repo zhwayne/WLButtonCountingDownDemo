@@ -69,18 +69,20 @@
 
 
 - (void)shouldCountDown {
-    self.enabled             = NO;
-    self.titleLabel.alpha    = 0;
-    self.overlayLabel.hidden = NO;
-    self.overlayLabel.text   = self.titleLabel.text;
-    [self.overlayLabel setBackgroundColor:self.disabledBackgroundColor ?: self.backgroundColor];
-    [self.overlayLabel setTextColor:self.disabledTitleColor ?: self.titleLabel.textColor];
     
     __weak __typeof(self) weakSelf = self;
-    [[WLButtonCountdownManager defaultManager] scheduledCountDownWithKey:self.identifyKey timeInterval:60 countingDown:^(NSTimeInterval leftTimeInterval) {
+    [[WLButtonCountdownManager defaultManager] scheduledCountDownWithKey:self.identifyKey timeInterval:5 countingDown:^(NSTimeInterval leftTimeInterval) {
         __strong __typeof(weakSelf) self = weakSelf;
+        
+        self.enabled             = NO;
+        self.titleLabel.alpha    = 0;
+        self.overlayLabel.hidden = NO;
+        [self.overlayLabel setBackgroundColor:self.disabledBackgroundColor ?: self.backgroundColor];
+        [self.overlayLabel setTextColor:self.disabledTitleColor ?: self.titleLabel.textColor];
         self.overlayLabel.text = [NSString stringWithFormat:@"%@ 秒后重试", @(leftTimeInterval)];
+        
     } finished:^(NSTimeInterval finalTimeInterval) {
+        
         __strong __typeof(weakSelf) self = weakSelf;
         self.enabled             = YES;
         self.overlayLabel.hidden = YES;

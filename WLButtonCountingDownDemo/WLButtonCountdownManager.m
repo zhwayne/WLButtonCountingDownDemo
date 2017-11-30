@@ -22,7 +22,7 @@
 /**
  *  计时剩余时间
  */
-@property (assign, nonatomic) NSTimeInterval leftTimeInterval;
+@property (assign, atomic) NSTimeInterval leftTimeInterval;
 /**
  *  后台任务标识，确保程序进入后台依然能够计时
  */
@@ -44,19 +44,20 @@
 }
 
 - (void)main {
+    
     self.taskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     
-    while (--_leftTimeInterval > 0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (_countingDownBlcok) _countingDownBlcok(_leftTimeInterval);
+    do {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (self.countingDownBlcok) self.countingDownBlcok(self.leftTimeInterval);
         });
         
         [NSThread sleepForTimeInterval:1];
-    }
+    } while (--self.leftTimeInterval > 0);
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (_finishedBlcok) {
-            _finishedBlcok(0);
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if (self.finishedBlcok) {
+            self.finishedBlcok(0);
         }
     });
     
@@ -64,6 +65,7 @@
         [[UIApplication sharedApplication] endBackgroundTask:self.taskIdentifier];
         self.taskIdentifier = UIBackgroundTaskInvalid;
     }
+
 }
 
 @end
@@ -137,7 +139,7 @@
     if ([self countdownTaskExistWithKey:aKey task:&task]) {
         task.countingDownBlcok = countingDown;
         task.finishedBlcok     = finished;
-        if (countingDown) {
+        if (countingDown && task.leftTimeInterval > 0) {
             countingDown(task.leftTimeInterval);
         }
     } else {

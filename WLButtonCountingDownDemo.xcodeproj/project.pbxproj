@@ -230,6 +230,7 @@
 				TargetAttributes = {
 					A3C5E7331C47526400DDA2A5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = PMEU432463;
 					};
 					A3C5E74C1C47526400DDA2A5 = {
 						CreatedOnToolsVersion = 7.2;
@@ -439,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PMEU432463;
 				INFOPLIST_FILE = WLButtonCountingDownDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhwayne.WLButtonCountingDownDemo;
@@ -450,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PMEU432463;
 				INFOPLIST_FILE = WLButtonCountingDownDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhwayne.WLButtonCountingDownDemo;
@@ -524,6 +527,7 @@
 				A3C5E7631C47526400DDA2A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3C5E7641C47526400DDA2A5 /* Build configuration list for PBXNativeTarget "WLButtonCountingDownDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +536,7 @@
 				A3C5E7661C47526400DDA2A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3C5E7671C47526400DDA2A5 /* Build configuration list for PBXNativeTarget "WLButtonCountingDownDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +545,7 @@
 				A3C5E7691C47526400DDA2A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
