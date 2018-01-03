@@ -31,7 +31,9 @@
 /**
  *  `NSOperation`的`name`属性只在iOS8+中存在，这里定义一个属性，用来兼容 iOS7
  */
-@property (copy, nonatomic) NSString *operationName;
+#ifndef __IPHONE_8_0
+@property (copy, nonatomic) NSString *name;
+#endif
 
 @end
 
@@ -148,12 +150,7 @@
         task.countingDownBlcok = countingDown;
         task.finishedBlcok     = finished;
         
-        if ([@([UIDevice currentDevice].systemVersion.doubleValue) compare:@(8)] == NSOrderedAscending) {
-            task.operationName = aKey;
-        }
-        else {
-            task.name = aKey;
-        }
+        task.name = aKey;
         
         [_pool addOperation:task];
     }
@@ -165,24 +162,13 @@
 {
     __block BOOL taskExist = NO;
     
-    if ([@([UIDevice currentDevice].systemVersion.doubleValue) compare:@(8)] == NSOrderedAscending) {
-        [_pool.operations enumerateObjectsUsingBlock:^(__kindof WLCountdownTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj.operationName isEqualToString:akey]) {
-                if (task) *task = obj;
-                taskExist = YES;
-                *stop     = YES;
-            }
-        }];
-    }
-    else {
-        [_pool.operations enumerateObjectsUsingBlock:^(__kindof WLCountdownTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj.name isEqualToString:akey]) {
-                if (task) *task = obj;
-                taskExist = YES;
-                *stop     = YES;
-            }
-        }];
-    }
+    [_pool.operations enumerateObjectsUsingBlock:^(__kindof WLCountdownTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.name isEqualToString:akey]) {
+            if (task) *task = obj;
+            taskExist = YES;
+            *stop     = YES;
+        }
+    }];
     
     return taskExist;
 }
