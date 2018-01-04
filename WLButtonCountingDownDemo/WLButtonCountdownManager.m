@@ -29,16 +29,20 @@
 @property (assign, nonatomic) UIBackgroundTaskIdentifier taskIdentifier;
 
 /**
- *  `NSOperation`的`name`属性只在iOS8+中存在，这里定义一个属性，用来兼容 iOS7
+ *  `NSOperation`的`name`属性只在iOS8+中存在，这里定义一个属性，用来兼容 iOS 7
  */
-#ifndef __IPHONE_8_0
-@property (copy, nonatomic) NSString *name;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+@property (copy) NSString *name;
 #endif
 
 @end
 
 
 @implementation WLCountdownTask
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+@synthesize name;
+#endif
 
 - (void)dealloc {
     _countingDownBlcok = nil;

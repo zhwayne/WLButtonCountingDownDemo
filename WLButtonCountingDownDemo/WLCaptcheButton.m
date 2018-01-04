@@ -40,6 +40,7 @@
 - (void)initialize {
     self.clipsToBounds      = YES;
     self.layer.cornerRadius = 4;
+    self.opaque             = NO;
     
     [self addSubview:self.overlayLabel];
 }
@@ -52,6 +53,7 @@
         _overlayLabel.font            = self.titleLabel.font;
         _overlayLabel.textAlignment   = NSTextAlignmentCenter;
         _overlayLabel.alpha           = 0;
+        _overlayLabel.opaque           = NO;
     }
     
     return _overlayLabel;
